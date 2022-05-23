@@ -1,14 +1,19 @@
 <template>
   <main>
       <div class="container">
-          
+          <AppCardFilm />
       </div>
   </main>
 </template>
 
 <script>
+import AppCardFilm from './AppCardFilm.vue';
+
 export default {
-    name: 'AppMain'
+    name: 'AppMain',
+    components: {
+        AppCardFilm
+    }
 }
 </script>
 
@@ -19,6 +24,8 @@ main{
     .container{
         width: 80%;
         margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
     }
 }
 </style>
