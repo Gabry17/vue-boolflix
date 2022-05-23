@@ -1,28 +1,64 @@
 <template>
   <div id="app">
     <!-- header -->
-    <AppHeader />
+    <header>
+      <div class="title">
+          <h1>netflix</h1>
+      </div>
+      <div class="search">
+          <input type="text" placeholder="titolo film">
+          <button @click="viewFilm" >cerca</button>
+      </div>
+  </header>
     <!-- /header -->
 
     <!-- main -->
-    <AppMain />
+    <AppMain :filmList="film" />
     <!-- /main -->
   </div>
 </template>
 
 <script>
-import AppHeader from './components/AppHeader.vue';
-import AppMain from './components/AppMain.vue';
+
+import AppMain from "./components/AppMain.vue";
+import axios from "axios";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    AppHeader,
-    AppMain
-  }
-}
+    AppMain,
+  },
+  data() {
+    return {
+      film: [],
+    };
+  },
+  methods: {
+    viewFilm() {
+      axios
+        .get(
+          "https://api.themoviedb.org/3/search/movie?api_key=cda791e52a23bffc861ee9b7107cfc69&query=l"
+        )
+        .then((resp) => {
+          this.film = resp.data.results;
+        });
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-@import './style/common.scss';
+@import "./style/common.scss";
+
+header{
+    background-color: black;
+    padding: 0 1em;
+    display: flex;
+    justify-content: space-between;
+    line-height: 100px;
+    .title{
+        color: red;
+        text-transform: uppercase;
+    }
+}
 </style>
