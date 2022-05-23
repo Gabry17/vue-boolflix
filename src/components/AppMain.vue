@@ -24,6 +24,7 @@ export default {
 main {
   background-color: #2d2c2c;
   height: calc(100vh - 100px);
+  overflow: scroll;
   .container {
     width: 80%;
     margin: 0 auto;

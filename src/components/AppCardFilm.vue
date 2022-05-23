@@ -2,7 +2,9 @@
   <div class="card">
       <h3>{{ filmObj.title }}</h3>
       <p>{{ filmObj.original_title }}</p>
-      <p>{{ filmObj.original_language }}</p>
+      <p v-if="filmObj.original_language === 'it'">🇮🇹</p>
+      <p v-if="filmObj.original_language === 'en'">🇬🇧</p>
+      <p v-if="filmObj.original_language !== 'it' && filmObj.original_language !== 'en'">{{ filmObj.original_language }}</p>
       <p>{{ filmObj.vote_average }}</p>
   </div>
 </template>
