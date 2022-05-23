@@ -5,7 +5,7 @@
     <!-- /header -->
 
     <!-- main -->
-    <AppMain :filmList="film" />
+    <AppMain :filmList="film" :serieList="serie" />
     <!-- /main -->
   </div>
 </template>
@@ -23,7 +23,8 @@ export default {
   },
   data() {
     return {
-      film: []
+      film: [],
+      serie: []
     };
   },
   methods: {
@@ -39,6 +40,19 @@ export default {
         )
         .then((resp) => {
           this.film = resp.data.results;
+        });
+
+        axios
+        .get(
+          "https://api.themoviedb.org/3/search/tv",{
+            params:{
+              api_key: 'cda791e52a23bffc861ee9b7107cfc69',
+              query: searchTitle
+            }
+          }
+        )
+        .then((resp) => {
+          this.serie = resp.data.results;
         });
     },
   },

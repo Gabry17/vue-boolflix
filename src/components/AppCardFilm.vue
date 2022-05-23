@@ -19,11 +19,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card{
-    color: white;
-    text-align: center;
-    width: calc(100% / 5 - 30px);
-    margin: 15px;
-}
 
 </style>
