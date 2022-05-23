@@ -3,13 +3,15 @@
     <!-- header -->
     <header>
       <div class="title">
-          <h1>netflix</h1>
+        <h1>netflix</h1>
       </div>
       <div class="search">
-          <input type="text" placeholder="titolo film">
-          <button @click="viewFilm" >cerca</button>
+        <input type="text" placeholder="titolo film" />
+        <button @click="viewFilm">
+          cerca
+        </button>
       </div>
-  </header>
+    </header>
     <!-- /header -->
 
     <!-- main -->
@@ -19,7 +21,6 @@
 </template>
 
 <script>
-
 import AppMain from "./components/AppMain.vue";
 import axios from "axios";
 
@@ -30,7 +31,7 @@ export default {
   },
   data() {
     return {
-      film: [],
+      film: []
     };
   },
   methods: {
@@ -49,16 +50,4 @@ export default {
 
 <style lang="scss">
 @import "./style/common.scss";
-
-header{
-    background-color: black;
-    padding: 0 1em;
-    display: flex;
-    justify-content: space-between;
-    line-height: 100px;
-    .title{
-        color: red;
-        text-transform: uppercase;
-    }
-}
 </style>
