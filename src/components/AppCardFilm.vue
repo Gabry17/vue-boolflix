@@ -4,7 +4,9 @@
       <h3>{{ filmObj.title }}</h3>
       <p>{{ filmObj.original_title }}</p>
       <p>{{ lang }}</p>
-      <p>{{ vote }}</p>
+      <div class="star">
+          <p v-for="(star , index) in this.vote" :key="index"><i class="fas fa-star"></i></p>
+      </div>
   </div>
 </template>
 
@@ -54,5 +56,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.star{
+    color: #e3e319;
+    display: flex;
+}
 </style>
