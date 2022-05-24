@@ -20,27 +20,11 @@ export default {
         }
     },
     mounted() {
-    if (this.filmObj.vote_average > 8) {
-      this.vote = 5;
-    } else if (
-      this.filmObj.vote_average > 6 &&
-      this.filmObj.vote_average < 9
-    ) {
-      this.vote = 4;
-    } else if (
-      this.filmObj.vote_average > 4 &&
-      this.filmObj.vote_average < 7
-    ) {
-      this.vote = 3;
-    } else if (
-      this.filmObj.vote_average > 2 &&
-      this.filmObj.vote_average < 5
-    ) {
-      this.vote = 2;
-    } else {
-      this.vote = 1;
-    }
-
+    if(this.filmObj.vote_average > 0){
+          this.vote = Math.ceil(this.filmObj.vote_average / 2);
+      } else {
+          this.vote = 1;
+      }
     if(this.filmObj.original_language === 'it'){
         this.lang = '🇮🇹'
     } else if (this.filmObj.original_language === 'en'){
