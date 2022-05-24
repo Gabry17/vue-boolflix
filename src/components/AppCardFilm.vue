@@ -9,7 +9,7 @@
         Titolo:<br />
         {{ filmObj.title }}
       </p>
-      <p>
+      <p :class="{remove: filmObj.title.toLowerCase() === filmObj.original_title.toLowerCase() }">
         Titolo originale:<br />
         {{ filmObj.original_title }}
       </p>
@@ -40,6 +40,7 @@ export default {
     return {
       vote: 0,
       lang: "",
+      
     };
   },
   mounted() {
@@ -48,6 +49,7 @@ export default {
     } else {
       this.vote = 1;
     }
+
     if (this.filmObj.original_language === "it") {
       this.lang = "🇮🇹";
     } else if (this.filmObj.original_language === "en") {
@@ -63,32 +65,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card {
-  position: relative;
-  .text {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: none;
-    background-color: black;
-    height: 100%;
-    width: 100%;
-    overflow: auto;
-    padding: 1em;
-  }
-}
-.card:hover .text {
-  display: block;
-}
-.star i {
-  color: #e3e319;
-}
-.star {
-  display: flex;
-  flex-direction: column;
-  .icon {
-    display: flex;
-    justify-content: center;
-  }
-}
+@import "../style/card.scss";
 </style>

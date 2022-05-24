@@ -1,7 +1,40 @@
 //card
-.card{
-    color: white;
-    text-align: center;
-    width: calc(100% / 5 - 30px);
-    margin: 15px;
+.card {
+  color: white;
+  text-align: center;
+  width: calc(100% / 5 - 10px);
+  margin: 5px;
+  position: relative;
+  padding: 0.2em 0;
+  img {
+    height: 100%;
+  }
+  .text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+  }
+}
+.card:hover .text {
+  display: block;
+}
+.star i {
+  color: #e3e319;
+}
+.star {
+  display: flex;
+  flex-direction: column;
+  .icon {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.remove {
+  display: none;
 }

@@ -9,13 +9,17 @@
         <span>Titolo:</span><br />
         {{ serieObj.name }}
       </p>
-      <p>
+      <p :class="{remove: serieObj.name.toLowerCase() === serieObj.original_name.toLowerCase() }">
         Titolo originale:<br />
         {{ serieObj.original_name }}
       </p>
       <p>
         Lingua:<br />
         {{ lang }}
+      </p>
+      <p>
+        Descizione:<br />
+        {{ serieObj.overview }}
       </p>
       <div class="star">
         <p>Voto:</p>
@@ -60,32 +64,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card {
-  position: relative;
-  .text {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: none;
-    background-color: black;
-    height: 100%;
-    width: 100%;
-    overflow: auto;
-    padding: 1em;
-  }
-}
-.card:hover .text {
-  display: block;
-}
-.star i {
-  color: #e3e319;
-}
-.star {
-  display: flex;
-  flex-direction: column;
-  .icon {
-    display: flex;
-    justify-content: center;
-  }
-}
+@import "../style/card.scss";
 </style>

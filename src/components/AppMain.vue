@@ -34,10 +34,11 @@ main {
   background-color: #2d2c2c;
   height: calc(100vh - 100px);
   overflow: scroll;
+  padding: 2em 0;
   h2{
     color: red;
     text-transform: uppercase;
-    padding: 1em;
+    margin-left: 1em;
   }
   .container {
     width: 80%;
