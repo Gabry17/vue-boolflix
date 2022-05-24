@@ -38,6 +38,7 @@ main {
     text-align: center;
     color: red;
     text-transform: uppercase;
+    padding: 1em;
   }
   .container {
     width: 80%;

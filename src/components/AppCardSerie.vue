@@ -1,5 +1,6 @@
 <template>
   <div class="card">
+      <img :src="'https://image.tmdb.org/t/p/w342' + serieObj.poster_path" alt="">
       <h3>{{ serieObj.name }}</h3>
       <p>{{ serieObj.original_name }}</p>
       <p v-if="serieObj.original_language === 'it'">🇮🇹</p>

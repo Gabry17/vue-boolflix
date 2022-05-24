@@ -1,5 +1,6 @@
 <template>
   <div class="card">
+      <img :src="'https://image.tmdb.org/t/p/w342' + filmObj.poster_path" alt="">
       <h3>{{ filmObj.title }}</h3>
       <p>{{ filmObj.original_title }}</p>
       <p v-if="filmObj.original_language === 'it'">🇮🇹</p>
@@ -12,6 +13,7 @@
 <script>
 export default {
     name: 'AppCardFilm',
+    urlImg: 'https://image.tmdb.org/t/p/w342',
     props: {
         filmObj: Object
     }
