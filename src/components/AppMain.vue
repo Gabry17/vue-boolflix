@@ -35,7 +35,6 @@ main {
   height: calc(100vh - 100px);
   overflow: scroll;
   h2{
-    text-align: center;
     color: red;
     text-transform: uppercase;
     padding: 1em;
