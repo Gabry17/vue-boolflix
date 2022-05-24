@@ -17,6 +17,10 @@
         Lingua:<br />
         {{ lang }}
       </p>
+      <p>
+        Descizione:<br />
+        {{ filmObj.overview }}
+      </p>
       <div class="star">
         <p>Voto:</p>
         <div class="icon">
