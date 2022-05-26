@@ -29,6 +29,12 @@
           </p>
         </div>
       </div>
+      <p>Cast:<br /></p>
+      <ul>
+        <li v-for="(actor, index) in serieObj.cast" :key="index">
+          {{ actor.name }}
+        </li>
+      </ul>
     </div>
   </div>
 </template>

@@ -5,7 +5,10 @@
     <!-- /header -->
 
     <!-- main -->
-    <AppMain :filmList="film" :serieList="serie" />
+    <img class="sfondo" :class="{none: film.length > 1}" src="./assets/img/netflix-xboxone-5c0baa4646e0fb00010dcf1c.jpeg" alt="">
+    <div class="none" :class="{block: film.length > 1}" >
+      <AppMain :filmList="film" :serieList="serie" />
+    </div>
     <!-- /main -->
   </div>
 </template>
@@ -24,43 +27,52 @@ export default {
   data() {
     return {
       film: [],
-      serie: [],
+      serie: []
     };
   },
   methods: {
     viewFilm(searchTitle) {
-
       const options = {
-        params:{
+        params: {
           api_key: "cda791e52a23bffc861ee9b7107cfc69",
-          query: searchTitle
-        }
-      }
+          query: searchTitle,
+        },
+      };
+
+      this.film = [];
       axios
         .get("https://api.themoviedb.org/3/search/movie", options)
         .then((resp) => {
-          this.film = resp.data.results;
+          const film = resp.data.results;
+          
+          film.forEach(item => {
+            axios
+              .get(`https://api.themoviedb.org/3/movie/${item.id}/credits`, options )
+              .then((resp) => {
+                item.cast = resp.data.cast.splice(0, 5);
+                this.film.push(item);
+              });
+          });
         });
 
+
+      this.serie = [];
       axios
         .get("https://api.themoviedb.org/3/search/tv", options)
         .then((resp) => {
-          this.serie = resp.data.results;
+          //this.serie = resp.data.results;
+          const serie = resp.data.results;
+          
+          serie.forEach(item => {
+            axios
+              .get(`https://api.themoviedb.org/3/movie/${item.id}/credits`, options )
+              .then((resp) => {
+                item.cast = resp.data.cast.splice(0, 5);
+                this.serie.push(item);
+              });
+          });
         });
-
-      // axios
-      // .get(
-      //   "https://api.themoviedb.org/3/movie/{movie_id}/credits",{
-      //     params:{
-      //       api_key: 'cda791e52a23bffc861ee9b7107cfc69',
-      //       query: searchTitle
-      //     }
-      //   }
-      // )
-      // .then((resp) => {
-      //   this.serie = resp.data.results;
-      // });
-    },
+    }
   },
 };
 </script>
@@ -68,4 +80,13 @@ export default {
 <style lang="scss">
 @import "./style/common.scss";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+.sfondo{
+  height: calc(100vh - 100px);
+}
+.none{
+  display: none;
+}
+.block{
+  display: block;
+}
 </style>
