@@ -29,13 +29,22 @@
           </p>
         </div>
       </div>
+      <p>
+        Cast
+      </p>  
+    <AppCastFilm v-for="(elem,index) in castList" :key="index" :castObj="elem" />
     </div>
   </div>
 </template>
 
 <script>
+import AppCastFilm from "./AppCastFilm.vue";
+
 export default {
   name: "AppCardFilm",
+  components: {
+    AppCastFilm
+  },
   data() {
     return {
       vote: 0,
@@ -66,6 +75,7 @@ export default {
   },
   props: {
     filmObj: Object,
+    castList: Array
   },
 };
 </script>

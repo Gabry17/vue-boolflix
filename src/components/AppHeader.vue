@@ -4,8 +4,8 @@
         <h1>netflix</h1>
       </div>
       <div class="search">
-        <input v-model="searchTitle" type="text" placeholder="titolo film" />
-        <button @click="$emit('search',searchTitle)">
+        <input v-model="searchTitle" type="text" placeholder="Search..." />
+        <button @click="sendSearch">
           <i class="fas fa-search"></i>
         </button>
       </div>
@@ -19,6 +19,13 @@ export default {
         return{
             searchTitle: ''
         }
+    },
+    methods: {
+      sendSearch(){
+        if(this.searchTitle.trim()){
+          this.$emit('search',this.searchTitle)
+        }
+      }
     }
 }
 </script>
